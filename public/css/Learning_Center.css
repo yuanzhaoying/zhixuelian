@@ -1,0 +1,301 @@
+#movie-container{position:relative;margin-bottom:30px;height:10000px;}#movie-container 
+
+.movie-box{position:absolute;}
+#movieTab{border-bottom:1px solid #ccc;padding-bottom:10px}
+#hot-movie{padding:15px 0}
+.movie-box{padding:0 8px;padding-bottom:15px;padding-top: 20px;margin-right: px;}
+.movie-item{background:#fff;-webkit-animation:fadeInUp .3s .2s ease both;-moz-animation:fadeInUp .3s .2s ease both;border-radius:2px;font-family:"黑体";transition:box-shadow .4s ease;width: 220px;height: 180px;}
+.movie-item:hover{box-shadow:0 4px 16px rgba(0,0,0,0);transition:box-shadow .4s ease}
+.movie-item .movie-post{height: 130px;overflow:hidden;width: 210px;}
+.movie-item .movie-post a{display:block;line-height:30px;padding:7px 7px 0;position:relative;}
+.movie-item .movie-post a .zoomOverlay{opacity:0; position:absolute;top:0;left:0;bottom:0;right:0;display:none;margin:7px 7px 0 7px;background-image:url(../images/zoom.png);background-repeat:no-repeat;background-position:center;}
+.movie-item .movie-post a:hover .zoomOverlay{opacity:.5;display:block;background-color:#000}
+.movie-item .movie-post img{width:100%;height:auto}
+.movie-item h3{padding:10px;overflow:hidden;font-size:16px;font-weight:bold;line-height:1.5em}
+.movie-item h3 a{overflow:hidden;word-break:break-all;text-overflow:ellipsis;-webkit-box-orient:vertical;display:box;display:-webkit-box;-webkit-line-clamp:2}
+.v{font-family:"微软雅黑";font-size: 14px;color: #590459;}
+.clearfloat{clear:both;height:0;font-size: 1px;line-height: 0px;}
+.movie-item .info{font-size:13px;color:#999;white-space:nowrap;text-overflow:ellipsis;position:relative;border-top:1px solid #eee;line-height:35px;padding:0 5px;text-align:center}
+.movie-item .info .info-data{margin-right:5px}
+.v{font-family:"微软雅黑";font-size: 5px;color:gray;}
+.img-round0{border-radius:50%;width:65px;height:65;vertical-align: middle;}
+.img-round{border-radius:5px;width:100px;height:auto;}
+.ranks{line-height:30px;margin-right:5px}
+body{
+    background: rgba(232,224,206, 0.2);
+}
+.a1{color:white;}
+a:hover{color:rgb(120,120,120);}
+.detail-top-search{
+    background: rgb(60 80 160);
+    padding: 0 1%;
+    /* height: 20%; */
+    line-height: 20%;
+}
+.ser-top{
+    position: relative;
+    display: inline-block;
+    line-height: 100%;
+}
+.nav-logo{
+    width: 25%;
+    margin: 0;
+    padding: 0%;
+    vertical-align: middle;
+}
+.nav-logo img{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    align-items: center;
+    height: 100%;
+    line-height: 100%;
+    padding-bottom: 4%;
+}
+.search{
+    width: 35%;
+    transform: translateY(-20%);
+    vertical-align: middle;
+    padding-top: 2%;
+    margin-left: 7%;
+}
+.ser-top-text{
+    font-family:"黑体";
+    text-align: center;
+    font-size: 150%;
+    padding-bottom: 1%;
+    transform: translateY(-40%);
+}
+
+.container{
+    width: 80%;
+    height: 100%;
+    position: relative;
+    background-color: white;
+}
+.row{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    float: left;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+}
+.left-row{
+    width: 25%;
+    float: left;
+}
+.right-row{
+    width: 75%;
+    float: right;
+}
+.clearfix{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+}
+.more-hist{
+    display: inline-block;
+    padding-left: 1%;
+    color:rgb(80,90,120);
+}
+    
+.dianzan img{
+    width: 40px;
+    height: 40px;
+}
+
+.dianzan{
+    line-height: 40px;
+    margin-right: 7px;
+}   
+
+.top-text{
+    padding-left: 1%;
+    vertical-align: middle;
+    margin-top: 3%;
+}
+.user-detail{
+    height:150px;
+    margin-top: 2%;
+    background-image: url(../images/admin/patterns/background2.png),-webkit-linear-gradient(bottom, white,white);
+    background-repeat: no-repeat;
+}
+.user-poster{
+    padding-left: 4%;
+}
+.ba-mt-6{
+    vertical-align: middle;
+    font-size: 130%;
+    color: black;
+}
+.user-name{
+    font-size: 175%;
+    letter-spacing: 2px;
+    bottom: 10%;
+    padding-left: 1%;
+}
+.user-zhicheng{
+    font-family:"微软雅黑";
+    text-align: center;
+    color: #ccc;
+    font-size: 110%;
+    letter-spacing: 1px;
+}
+h2{
+    margin-left: 10%;
+    font-weight: 500;
+    font-size: 200%;
+    letter-spacing: 2px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.user-thing{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 1%;
+}
+.jiaohu{
+    float: right;
+    margin-top: 55px;
+}
+.detail-two{
+    float:left;
+    width:5%;
+    margin: 7% 0;
+    margin-right: 1%;
+    color: #655966;
+    margin-left: 1%;
+}
+.detail-three{
+    margin: 7% 0;
+    margin-right: 2%;
+    color: #655966;
+}
+.text-center{
+    font-style: italic;
+    text-align:center;
+    letter-spacing: 7px;
+    font-size: 150%;
+    padding-top: 2%;
+}
+/*日历*//*
+.calendar{
+    height:450px;
+    background:#fff;
+    box-shadow:0px 1px 1px rgba(0,0,0,0.1);
+}
+.body-list ul{
+    width:100%;
+    font-family:arial;
+    font-weight:bold;
+    font-size:14px;
+}
+.body-list ul li{
+    width:14.28%;
+    height:36px;
+    line-height:36px;
+    list-style-type:none;
+    display:block;
+    box-sizing:border-box;
+    float:left;
+    text-align:center;
+}
+.lightgrey{
+    color:#a8a8a8; 
+}
+.darkgrey{
+    color:#565656; 
+}
+.green{
+    color:#6ac13c;
+}
+.greenbox{
+    border:1px solid #6ac13c;
+    background:#e9f8df; 
+}
+#calendar-title{
+    display: inline-block;
+    font-size: 150%;
+}
+#calendar-year{
+    display: inline-block;
+    font-size:85%;
+}
+.direction{
+    font-size: 150%;
+}
+.title{
+    text-align: center;
+    margin-left: 11%;
+    margin-right: 2%;
+}*/
+/*证书*/
+.zhengshu{
+    height: 450px;
+    background:#fff;
+}
+.z-left{
+    width: 30%;
+    display: inline-block;
+}
+.z-right{
+    width: 65%;
+    display: inline-block;
+    vertical-align: top;
+    /* padding: 2% 2%; */
+    margin: 2% 2%;
+    border-left: 1px solid lightblue;
+}
+.h3r{
+    text-align:left;
+    width: 20%;
+    display: inline-block;
+}
+.ts1{
+    margin-left: 5%;
+    text-align: center;
+    color: rgb(140,140,140);
+    font-size: 125%;
+}
+.ts2{
+    font-size: 150%;
+    padding: 5%;
+    width: 34%;
+    background: rgb(110,130,190);
+    margin-left: 35%;
+    margin-top: 10%;
+}
+.nozs{padding-top: 7%;padding-bottom: 5%;}
+
+
+* {margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body {width:100%;height:100%;background:#f2f2f2;}
+ul,li {list-style:none;}
+#calendar_Dodui {width:100%;background:white;height: 450px;border-bottom: 1px solid lightblue;}
+#calendarYm_Dodui {height:3em;width:100%;line-height:3em;font-size:1.2em;/* color:#fff; */text-indent:10%;border-bottom:1px solid #fff;padding-left: 20%;}
+#calendarYm_Dodui span {/*display:block;*/padding:0 6%;}
+#week_Dodui {width:100%;/* color:#fff; */font-size:1.2em;display:flex;height:3rem;margin-left: 5%;}
+#week_Dodui span {display:block;width:calc(100% / 7);text-align:center;line-height:3rem;}
+#dayBG_Dodui {background:#fff;position:relative;width:100%;height:auto;margin-left: 5%;}
+#daydataBG_Dodui {position:relative;width:100%;height:18.7em;}
+#daydataBG_Dodui li {display:block;width:calc(97.6% / 7);/* background:#f0f0f0; */height:3em;float:left;margin:.2% .2%;}
+#daydataBG_Dodui li:nth-of-type(7n-6) {margin-left:0;}
+#daydataBG_Dodui li:nth-of-type(7n) {margin-right:0;}
+#dataNums_Dodui {position:absolute;top:0;left:0;width:100%;height:auto;}
+#dataNums_Dodui li {display:block;width:calc(97.6% / 7);height:3em;float:left;margin:.2% .2%;text-align:center;line-height:3em;font-size:1em;}
+#dataNums_Dodui li:nth-of-type(7n-6) {margin-left:0;}
+#dataNums_Dodui li:nth-of-type(7n) {margin-right:0;}
+#chooseCalendar_Dodui {width:100%;height:18em;background:#fff;position:fixed;bottom:0;left:0;}
+.yearMonth {width:100%;height:3em;background:white;color:#fff;position:relative;}
+.yearMonth span {display:inline-block;width:5em;height:2.4em;line-height:2.4em;text-align:center;font-size:1.3em;text-align:center;}
+.yearMonth span:nth-of-type(2) {position:absolute;right:0;top:0;}
+.chooseYearMonth {width:100%;height:auto;display:flex;}
+.chooseYearMonth ul {width:50%;text-align:center;height:15em;overflow:scroll;}
+.chooseYearMonth ul li {line-height:3em;}
+#chkYearMonth {width:100%;height:3em;position:absolute;top:9em;left:0;border-top:1px solid #f2f2f2;border-bottom:1px solid #f2f2f2;}

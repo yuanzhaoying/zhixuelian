@@ -1,0 +1,168 @@
+﻿#foucsBox {
+    position: relative;
+    width: 49%;
+    height:80%;
+    overflow: hidden;
+    zoom: 1;
+    border-radius: 9%;
+
+
+}
+
+#foucsBox .imgCon {
+    width: 750px;
+    height: 315px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+}
+
+#foucsBox .imgCon li {
+    float: left;
+    width: 750px;
+    height: 315px;
+}
+
+#foucsBox .imgCon li img {
+    border: 0;
+
+}
+
+#foucsBox .imgCon li .imgTitle {
+    width: 750px;
+    position: absolute;
+    top: 95%;
+    text-align: center;
+    z-index: 2;
+}
+
+#foucsBox .imgCon li .imgTitle a {
+    color: rgb(9, 9, 75);
+    display: block;
+    text-decoration: none;
+    font-family: "Microsoft Yahei", "黑体";
+    font-weight: normal;
+    font-size: 18px;
+    zoom: 1;
+}
+
+#foucsBox .showPage {
+    width: 750px;
+    height: 70px;
+    position: absolute;
+    top: 92%;
+    background: rgb(140, 156, 156);
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    z-index: 1;
+}
+
+#foucsBox .foucs {
+    width: 750px;
+    height: 22px;
+    position: absolute;
+    bottom: 3px;
+    text-align: center;
+    z-index: 3;
+}
+
+#foucsBox .foucs span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 5px;
+    line-height: 0;
+    font-size: 0;
+    background: url(/images/bg.png) -160px -90px no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#foucsBox .foucs span.f {
+    background: url(/images/bg.png) -170px -90px no-repeat;
+}
+
+#foucsBox .foucsButton {
+    width: 40px;
+    height: 56px;
+    padding: 7px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 4;
+}
+
+#foucsBox .foucsButton span {
+    display: inline;
+    width: 23px;
+    height: 45px;
+    margin: 7px 5px 0;
+    cursor: pointer;
+    overflow: hidden;
+    background: url(/images/bg.png) 0 0 no-repeat;
+}
+
+#foucsBox .foucsButton img {
+    display: none;
+    cursor: pointer;
+    border-width: 0px;
+    vertical-align: middle;
+    width: 100px;
+    height: 56px;
+}
+
+#foucsBox .lBtn {
+    float: left;
+}
+
+#foucsBox .lBtn span {
+    float: left;
+    background-position: 0 -90px;
+}
+
+#foucsBox .rBtn {
+    float: right;
+}
+
+#foucsBox .rBtn span {
+    float: right;
+    background-position: -30px -90px;
+}
+
+#foucsBox .btnHover {
+    width: 146px;
+    background: rgb(140, 156, 156);
+    overflow: hidden;
+}
+
+#foucsBox .btnHover img {
+    display: inline;
+}
+
+#foucsBox {
+    height: 80%;
+
+}
+
+.pr {
+    position: relative;
+}
+
+.boxs {
+    
+    display: flex;
+    align-items: center;
+    width: 1500px;
+    height: 100%;
+    justify-content: space-around;
+    margin: 0 auto;
+
+
+
+}
+/*
+.left {
+    min-height: 360px;
+}*/
+
+.right {}

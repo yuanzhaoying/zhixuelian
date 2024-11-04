@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" type="text/css" href="/libs/webuploader/webuploader.css">
+	<link rel="stylesheet" href="/css/addEdit.css">
+</head>
+<body>
+<div class="container">
+     <script type="text/javascript">
+        function submit_sure(){
+        if (confirm("您的信息将会被保存至区块链，您确定继续提交吗？")){
+        return true;
+        }else{
+        return false;
+        }
+		}
+     </script>
+	<form  method="post" onsubmit="return submit_sure()" action="/admin/movie/add" class="form-horizotal" enctype="multipart/form-data" id="form-movie">
+		<!--<div class="input-group">-->
+		<!--	<span class="input-group-addon">视频推荐者</span>-->
+		<!--	<input type="text" class="form-control" id="douban" name="movie[presenter]" placeholder="推荐者" value="{{movie.presenter}}">-->
+		<!--</div>-->
+		<input type="hidden" class="form-control" id="douban" name="movie[presenter]" value="{{user.name}}">
+		<div class="input-group">
+			<span class="input-group-addon">视频名称</span>
+			<input type="text" required class="form-control" name="movie[title]" id="title" placeholder="视频名称" value="{{movie.title}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">原作者</span>
+			<input type="text" required class="form-control" name="movie[director]" id="director" placeholder="原作者" value="{{movie.director}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">适合学龄</span>
+			<input type="text" required class="form-control" name="movie[school_age]" id="actors" placeholder="适合学龄" value="{{movie.school_age}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">内容量</span>
+			<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<input type="radio"  name="movie[content_type]" id="language" value="合集类" checked>合集类&nbsp;&nbsp;
+			<input type="radio" name="movie[content_type]" value="单章节">单章节
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">原视频观看量</span>
+			<input type="text" class="form-control" name="movie[view]" id="country" placeholder="原视频观看量" value="{{movie.view}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">视频分类</span>
+			<select class="form-control" name="movie[category]" id="category">
+				<option value="">请选择分类</option>
+				{{if categorys && categorys.length}}
+				{{each categorys}}
+				<option value="{{$value.name}}" {{if movie.category == $value.name}}selected{{/if}}>{{$value.name}}</option>
+				{{/each}}
+				{{/if}}
+			</select>
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">视频标签</span>
+			<select class="form-control" name="movie[category]" id="category">
+				<option value="">请选择标签</option>
+				{{if labels && labels.length}}
+				{{each labels}}
+				<option value="{{$value.name}}" {{if movie.label == $value.name}}selected{{/if}}>{{$value.name}}</option>
+				{{/each}}
+				{{/if}}
+			</select>
+		</div>
+		<div class="post-wrap">
+			<div id="uploader-demo">
+			    <div id="fileList" class="uploader-list"></div>
+			    <div id="filePicker">上传封面</div>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">封面图片</span>
+				<input type="text" class="form-control" name="movie[poster]" id="poster" placeholder="封面图片,可填写图片链接或上传一张图片" value="{{movie.poster}}">
+			</div>
+		</div>
+		<!--<div class="form-group">
+			<label for="uploadPoster">封面上传</label>
+			<input type="file" id="uploadPoster" name="uploadPoster">
+		</div>-->
+		<div class="input-group">
+			<span class="input-group-addon">视频地址</span>
+			<input type="text" class="form-control" name="movie[flash]" id="flash" placeholder="视频地址" value="{{movie.flash}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">上传时间</span>
+			<input type="text" class="form-control" name="movie[year]" id="time" >
+			<script>
+		        Date.prototype.format = function (fmt) {
+		            var o = {
+		                "y+": this.getFullYear, //年
+		                "M+": this.getMonth() + 1, //月份
+		                "d+": this.getDate(), //日
+		                "h+": this.getHours(), //小时
+			            "m+": this.getMinutes(), //分
+		            };
+		            if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+		            for (var k in o)
+		                if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+		            return fmt;
+	        	}
+				// setInterval("document.getElementById('time').innerHTML = (new Date()).format('yyyy-MM-dd');");
+				document.getElementById('time').value = (new Date()).format('yyyy-MM-dd hh:mm');
+    		</script>
+    		
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">推荐原因</span>
+			<textarea class="form-control" name="movie[summary]" id="summary" placeholder="推荐原因">{{movie.summary}}</textarea>
+		</div>
+		{{if movie.id}}
+		<input type="hidden" name="movie[_id]" value="{{movie.id}}">
+		{{/if}}
+		<button type="submit" class="btn btn-primary" id="submitForm"><i class="fa fa-save"></i>{{if movie.id}}保存并修改{{else}}保存并添加{{/if}}</button>
+	</form>
+</div>
+<script type="text/javascript" src="/libs/webuploader/webuploader.min.js"></script> 
+<script type="text/javascript" src="/js/addEdit.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" href="/css/detail.css">
+</head>
+<body>
+{{include '/include/nav-top'}}
+<div class="detail-top-search">
+	<div class="nav-logo ser-top" >
+		<a href="/"><img src="/images/logo(2).png"></a>
+	</div>
+	<div class="index ser-top ser-top-text">
+		<a href="/">首页</a>
+	</div>
+	<div class="lesson ser-top ser-top-text">
+		<a href="/">课程</a>
+	</div>
+	<div class="search ser-top">
+		 <form action="/search" method="GET">
+		 <div class="input-group">
+			 <input type="text" class="form-control" placeholder="输入关键字后搜索..." name="search_text">
+			 <span class="input-group-btn">
+				 <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+			 </span>
+		 </div>
+		 </form>
+	 </div>
+	<div class="upload-videos ser-top ser-top-text">
+		<a href="/admin">上传视频</a>
+	</div>
+</div>
+<div class="container">
+	{{if likes}}
+	<div class="left-row row">
+        <div class="box-title"><h3>点赞排行</h3></div>
+        {{each likes as movie}}
+        <a href="/movie/{{movie.id}}">
+          <div class="personal-inf">
+            <!-- <img class="movie-img" src="{{movie.poster}}" alt="{{movie.title}}" /> -->
+            <div class="movie-title">{{movie.title}}</div>
+            <div class="data">
+              <span class="info-data">
+                <span class="glyphicon glyphicon-eye-open"></span>
+                {{movie.pv}}
+              </span>
+              <span class="info-data">
+                <span class="fa fa-thumbs-up"></span>
+                {{movie.likes}}
+              </span>
+            </div>
+          </div>
+        </a>
+        {{/each}}
+    </div>
+	{{/if}}
+	<div class="right-row row">
+		<!--mian-->
+		<div class="main-contain">
+			<div class="main-post col-md-3">
+				<img src="{{movie.poster}}">
+				<button type="button" id="but1">
+					<a href="{{movie.flash}}">
+						<div class="btn-play"></div>播放
+					</a>
+				</button>
+			</div>
+			<div class="main-introduction">
+				<div class="info col-md-9">
+					<div class="info-title">
+						{{movie.title}}
+					</div>
+					<div class="dianzan-fa">
+						<div id="dianzan">
+						  <img
+							src="/images/newHeart2021Active.png"
+							id="like-img-active"
+							style="display: none"
+							alt=""
+						  />
+						  <img
+							src="/images/newHeart2021Black.png"
+							id="like-img"
+							style="display: block"
+							alt=""
+						  />
+						  <span
+							id="num"
+							style="color: rgb(153, 154, 170)"
+							data-movie-id="{{movie.id}}"
+							data-is-like="{{isLike.toString()}}"
+							>{{movie.likes}}</span
+						  >
+						</div>
+					  </div>
+					  <script>
+						var zan = document.getElementById('dianzan')
+						var num = document.getElementById('num')
+						var likes = Number(num.innerText)
+						var movieId = num.dataset.movieId
+						var isLike = JSON.parse(num.dataset.isLike)
+						if (isLike) {
+						  document.getElementById('like-img').style.display = 'none'
+						  document.getElementById('like-img-active').style.display = 'block'
+						  document.getElementById('num').style.color = 'rgb(252, 85, 49)'
+						}
+						zan.onclick = function () {
+						  $.post(`like/${movieId}?isLike=${isLike}`, data => {
+							var { code, msg } = data
+							if (code !== 1) {
+							  return alert(msg)
+							}
+							if (!isLike) {
+							  isLike = true
+							  num.innerHTML = likes + 1
+							  document.getElementById('like-img').style.display = 'none'
+							  document.getElementById('like-img-active').style.display = 'block'
+							  document.getElementById('num').style.color = 'rgb(252, 85, 49)'
+							} else {
+							  isLike = false
+							  num.innerHTML = likes
+							  document.getElementById('like-img').style.display = 'block'
+							  document.getElementById('like-img-active').style.display = 'none'
+							  document.getElementById('num').style.color = 'rgb(153, 154, 170)'
+							}
+						  })
+						}
+					  </script>
+					<div class="panel panel-default ranks">
+						<div class="panel-heading">播放地址</div>
+						<div class="panel-body">
+							{{movie.flash}}
+						</div>
+					</div>
+					<p><span class="title">作者:</span>{{movie.director}}</p>
+					<p><span class="title">适合学龄:</span>{{movie.school_age}}</p>
+					<p><span class="title">内容量:</span>{{movie.content_type}}</p>
+					<p><span class="title">观看量:</span>{{movie.view}}</p>
+					<p><span class="title">上传时间:</span>{{movie.year}}</p>
+				</div>
+			</div>
+		</div>
+		<!--推荐原因-->
+		<div class="summary col-md-12">
+			<div class="alert alert-success">推荐原因</div>
+			<p>{{movie.summary}}</p>
+		</div>
+		<!--comment-->
+		<div class="comment">
+			<div class="comment-panel">
+				<ul class="comments-list">
+					<li class="comment-title">评论列表</li>
+					{{if comments.length}}
+					{{each comments as comment floor}}
+					<li class="comment">
+						<div class="comment-img">
+							<img src="/images/noavatar_default.png" />
+						</div>
+						<div class="comment-body">
+							<p class="clearfix">
+								<a href="javascript:;" class="fl">{{comment.from.name}}</a>
+								<span class="fr">#{{floor+1}}</span>
+							</p>
+							<div class="comment-content">
+								{{comment.content}}
+							</div>
+							<p class="toolbar clearfix">
+								<span class="fl">{{comment.createtime}}</span>
+								<a href="#replay-box" data-cid="{{comment.id}}" toUser="{{comment.from.name}}" userId="{{comment.from.id}}" class="fr">回复</a>
+							</p>
+						</div>
+						{{if comment.reply}}
+						{{each comment.reply as reply index}}
+							<div class="reply">
+								<div class="comment-img">
+									<img src="/images/noavatar_default.png" />
+								</div>
+								<div class="comment-body">
+									<p>
+										<a href="javascript:;">{{reply.from.name}}</a>
+										<span class="text-primary">回复</span>
+										<a href="javascript:;">{{reply.to.name}}</a>
+									</p>
+									<div class="comment-content">
+										{{reply.content}}
+									</div>
+									<p class="toolbar clearfix">
+										<span class="fl">{{reply.createtime}}</span>
+										<a href="#replay-box" data-cid="{{comment.id}}" toUser="{{reply.from.name}}" userId="{{reply.from.id}}" class="fr">回复</a>
+									</p>
+								</div>
+							</div>
+						{{/each}}
+						{{/if}}
+					</li>
+					{{/each}}
+					{{else}}
+					<li class="comment-empty">暂无评论</li>
+					{{/if}}
+				</ul>
+				{{if user}}
+				<div class="replybox" id="replay-box">
+					<img src="/images/noavatar_default.png" />
+					<form method="post" action="/movie/comment/reply" id="replay-form">
+						<input type="hidden" name="comment[from]" value="{{user._id}}" />
+						<input type="hidden" name="comment[movie]" value="{{movie.id}}" />
+						
+						
+						<input type="hidden" name="comment[createtime]" id="time" />
+						<script>
+							Date.prototype.format = function (fmt) {
+								var o = {
+									"y+": this.getFullYear, //年
+									"M+": this.getMonth() + 1, //月份
+									"d+": this.getDate(), //日
+									"h+": this.getHours(), //小时
+									"m+": this.getMinutes(), //分
+								};
+								if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+								for (var k in o)
+									if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+								return fmt;
+							}
+							document.getElementById('time').value = (new Date()).format('yyyy-MM-dd hh:mm');
+						</script>
+						
+		
+						
+						
+						<div class="textarea-wrap">
+							<textarea name="comment[content]" placeholder="说点什么吧..."></textarea>
+						</div>
+						<div class="post-toolbar">
+							<p>
+								<span class="ba-mr-20">评论人：{{user.name}}</span>
+								<span class="none"> 回复：<strong reply-user></strong></span>
+							</p>
+							<input type="submit" class="post-btn" value="评论" />
+						</div>
+					 </form>
+				{{else}}
+				 <div class="nologin">
+					 只有登录了才能参与评论，快<a href="/register#signin">登录</a>！如果你还没有账号你可以<a href="/register#signup">注册</a>一个账号。
+				 </div>
+				{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{include '/include/footer'}}
+<script type="text/javascript" src="/js/detail.js"></script>
+</body>
+</html>

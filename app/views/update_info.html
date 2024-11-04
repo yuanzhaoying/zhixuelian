@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" type="text/css" href="/libs/webuploader/webuploader.css">
+	<link rel="stylesheet" href="/css/addEdit.css">
+</head>
+<body>
+<div class="container">
+     <script type="text/javascript">
+        function submit_sure(){
+        if (confirm("您的信息将会被保存至区块链，您确定继续提交吗？")){
+        return true;
+        }else{
+        return false;
+        }
+		}
+     </script>
+	<form  method="post" onsubmit="return submit_sure()" action="/admin/user/update" class="form-horizotal" enctype="multipart/form-data" id="form-user">
+		<input type="hidden" class="form-control" id="douban" name="user[name]" value="{{user.name}}">
+		<div class="post-wrap">
+			<div id="uploader-demo">
+			    <div id="fileList" class="uploader-list"></div>
+			    <div id="filePicker">上传头像</div>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">头像</span>
+				<input type="text" class="form-control" name="user[poster]" id="poster" placeholder="请上传您的头像" value="{{user.poster}}">
+			</div>
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">昵称</span>
+			<input type="text" required class="form-control" name="user[name]" id="name" placeholder="昵称" value="{{user.name}}">
+		</div>
+		
+		<div class="input-group">
+			<span class="input-group-addon">出生日期</span>
+			<input type="data" required class="form-control" name="user[birth]" id="birth" placeholder="出生日期" value="{{user.birth}}">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">性别</span>
+			<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<input type="radio"  name="user[content_type]" id="language" value="男" checked>男&nbsp;&nbsp;
+			<input type="radio" name="user[content_type]" value="女">女
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">个人简介</span>
+			<textarea class="form-control" name="user[profile]" id="profile" placeholder="个人简介">{{user.profile}}</textarea>
+		</div>
+		{{if user.id}}
+		<input type="hidden" name="user[_id]" value="{{user.id}}">
+		{{/if}}
+		<button type="submit" class="btn btn-primary" id="submitForm"><i class="fa fa-save"></i>保存并修改</button>
+	</form>
+</div>
+<script type="text/javascript" src="/libs/webuploader/webuploader.min.js"></script> 
+<script type="text/javascript" src="/js/addEdit.js"></script>
+</body>
+</html>

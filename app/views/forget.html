@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	{{include '/include/head'}}
+	<link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+<div class="main-content">
+	<h1 class="title"><a href="/">智学链</a></h1>
+	<div class="tab tab-signup">
+		<form method="post" action="/user/reset" class="form-horizotal" id="reset_password">
+			<div class="group-input">
+                <div class="input-wrap">
+					<input required type="text" name="user[name]" signup-name placeholder="用户名" id='username'>
+					<label class="error"></label>
+				</div>
+				<div class="input-wrap">
+					<input required type="password" name="user[password]" signup-pass placeholder="密码" id='password'>
+					<label class="error"></label>
+				</div>
+				<div class="input-wrap">
+					<input required type="password" signup-confirm placeholder="确认密码" id='confirm' >
+					<label class="error"></label>
+				</div>
+					<div class="input-wrap">
+					<input required type="text" name="user[email]" signup-email placeholder="请输入邮箱" id="email">
+					<label class="error"></label>
+				</div>
+				<div class="input-wrap">
+					<input type="button"  onclick="send_email()" class="btn btn-danger" value="发送验证码" id="emialcore">
+				</div>
+				<div class="input-wrap">
+					<input required type="text" name="user[code]" signup-code placeholder="请输入验证码" id="code">
+					<label class="error"></label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary btn-block">更改密码</button>
+		</form>
+	</div>
+</div>
+<canvas id="canvas"></canvas>
+<script src="/js/register.js" type="text/javascript"></script>
+</body>
+</html>
